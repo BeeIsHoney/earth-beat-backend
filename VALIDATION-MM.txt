@@ -1,0 +1,29 @@
+စစ်ဆေးပြီးသော update: Temperature / Rainfall / Vegetation signal sonification
+
+Java 25.0.2၊ Spring Boot 4.1.1၊ Maven 3.9.11 ဖြင့် စမ်းထားပါသည်။
+Backend source compile၊ JAR package နှင့် tests ၂၈ ခု အောင်မြင်ပါသည်။
+Failure ၀၊ error ၀၊ skipped ၀ ဖြစ်ပါသည်။
+
+စစ်ထားသော behavior:
+- မူလ NASA temperature CSV parser / import / database / API behavior
+- NASA temperature တစ်လ / တစ်နှစ်စာ WAV
+- ကိုယ်ပေးသော temperature anomaly၊ rainfall mm၊ vegetation NDVI မှ အသံထုတ်ခြင်း
+- zero rainfall တွင် silence
+- WAV PCM header / sample rate / bit depth / timeline length
+- invalid input၊ null values၊ timeline size / audio length limit
+- frontend GET / POST CORS
+
+စမ်းသပ်မှုအကန့်အသတ်:
+မူလ pom.xml မှ springdoc-openapi-starter-webmvc-ui:3.1.1 ကို
+ဒီ environment မှ download မရပါ (Maven Central DNS/network restriction)။
+ထို့ကြောင့် validation အတွက်သာ Swagger dependency မပါသော temporary POM ကိုသုံးပါသည်။
+ပြန်ပေးသော ZIP ထဲက pom.xml မှာ သင့်မူလ Swagger dependency ကို ဆက်ထားပါသည်။
+Swagger ပါသော exact full build ကို ဒီ environment တွင် အတည်မပြုထားပါ။
+
+Database စမ်းသပ်မှုသည် H2 MySQL compatibility mode ဖြစ်ပါသည်။
+သင့် local MySQL / credentials ကို တိုက်ရိုက်စမ်းမထားပါ။
+NASA live download ကို ဒီ update တွင် ထပ်မစမ်းထားပါ။
+
+Rainfall / vegetation data auto-download မပါပါ။
+ကိုယ့် dataset မှ mm / NDVI တန်ဖိုးများကို API ထဲပေးရပါမည်။
+SOUND-MM.md နဲ့ Postman collection ထဲက example values သည် demo သာဖြစ်ပါသည်။
